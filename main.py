@@ -66,7 +66,7 @@ def on_password_input(e):
 def on_password_output(e):
     code = password.get()
     if code == "":
-        password.config(show="")
+        
         password.insert(0, "Enter your Password")
 
 # Create the Password Entry widget
@@ -75,6 +75,29 @@ password.place(x=20, y=170)
 password.insert(0, "Enter your Password")
 password.bind("<FocusIn>", on_password_input)
 password.bind("<FocusOut>", on_password_output)
+
+# Password state widget and functionality
+def password_state():
+    if btn_password_state.current_image == view_state_img:
+        btn_password_state["image"] = hide_state_img
+        btn_password_state.current_image = hide_state_img
+        password.config(show="")
+        
+    else:
+        btn_password_state["image"] = view_state_img
+        password.config(show="*")
+        btn_password_state.current_image = view_state_img
+       
+view_image = Image.open("assets/images/view.png")
+view_state_img = ImageTk.PhotoImage(view_image)
+
+hide_image = Image.open("assets/images/hide.png")
+hide_state_img = ImageTk.PhotoImage(hide_image)
+
+btn_password_state = Button(sign_in_frame, image=view_state_img, width=20, bg="white", border=0, command = password_state)
+btn_password_state.current_image = view_state_img 
+btn_password_state.place(x=420, y=170)
+
 
 # Separator line for Password Entry
 Frame(sign_in_frame, width=500, height=2, bg="cornflowerblue").place(x=15, y=200)
