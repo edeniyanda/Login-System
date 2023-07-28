@@ -20,7 +20,7 @@ alignstr = f'{APP_WIDTH}x{APP_HEIGHT}+{(screen_width - APP_WIDTH) // 2}+{(screen
 # Configure the root window properties
 root.geometry(alignstr)  # Set the window dimensions and position
 root.resizable(0, 0)     # Disable window resizing
-root.title("Login")      # Set the title of the window
+root.title("QuantumTone-Login")      # Set the title of the window
 root.configure(background="white")  # Set the background color of the window
 
 # Load and display the Sign In image on the window
